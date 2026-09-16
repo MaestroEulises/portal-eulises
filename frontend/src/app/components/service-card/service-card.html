@@ -1,0 +1,41 @@
+<article class="gold-card flex h-full flex-col overflow-hidden rounded-3xl">
+  <a [routerLink]="['/servicios', service().id]" class="block no-underline">
+    <div class="relative h-44 shrink-0">
+      <img
+        [src]="service().image"
+        [alt]="'Imagen representativa de ' + service().name"
+        width="640"
+        height="360"
+        class="absolute inset-0 h-full w-full object-cover"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent"></div>
+      <span
+        class="absolute top-3 left-3 flex h-10 w-10 items-center justify-center rounded-full border border-gold/30 bg-ink/70 text-gold-light backdrop-blur-md"
+      >
+        <app-icon [name]="iconName(service().icon)" [size]="18" />
+      </span>
+    </div>
+  </a>
+  <div class="flex flex-1 flex-col p-5">
+    <h3 class="font-display text-2xl leading-tight">
+      <a
+        [routerLink]="['/servicios', service().id]"
+        class="text-cream no-underline transition hover:text-gold-light"
+      >
+        {{ service().name }}
+      </a>
+    </h3>
+    <p class="mt-3 line-clamp-3 text-sm leading-6 text-cream/70">{{ service().description }}</p>
+    <p class="mt-3 text-xs tracking-wide text-cream/50">{{ service().duration }}</p>
+    <div class="mt-auto flex flex-wrap gap-2 pt-5">
+      <a
+        [routerLink]="['/servicios', service().id]"
+        class="btn-secondary !px-4 !py-2 text-sm"
+      >
+        Ver detalle
+      </a>
+      <app-payment-button [service]="service()" [label]="service().cta" />
+    </div>
+  </div>
+</article>

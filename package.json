@@ -1,0 +1,18 @@
+{
+  "name": "portal-esoterico",
+  "private": true,
+  "description": "Monorepo Maestro Eulises — frontend Angular + backend Spring Boot 3",
+  "scripts": {
+    "frontend:install": "npm --prefix frontend install",
+    "frontend:start": "npm --prefix frontend start",
+    "frontend:build": "npm --prefix frontend run build",
+    "frontend:lint": "npm --prefix frontend run lint",
+    "backend:jdk": "powershell -ExecutionPolicy Bypass -File backend/scripts/ensure-jdk17.ps1",
+    "backend:build": "powershell -ExecutionPolicy Bypass -File backend/scripts/build.ps1",
+    "backend:start": "powershell -ExecutionPolicy Bypass -File backend/scripts/run.ps1",
+    "backend:test": "powershell -ExecutionPolicy Bypass -File backend/scripts/test.ps1",
+    "start:frontend": "npm run frontend:start",
+    "start:backend": "npm run backend:start",
+    "build": "npm run backend:build && npm run frontend:build"
+  }
+}

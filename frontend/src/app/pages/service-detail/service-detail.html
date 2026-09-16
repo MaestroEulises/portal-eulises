@@ -1,0 +1,131 @@
+<section class="container-page pt-28 pb-20">
+  @if (service(); as item) {
+    <nav class="mb-8 text-sm text-cream/55" aria-label="Migas de pan">
+      <a routerLink="/" class="hover:text-gold-light">Inicio</a>
+      <span class="mx-2">/</span>
+      <a routerLink="/servicios" class="hover:text-gold-light">Servicios</a>
+      <span class="mx-2">/</span>
+      <span class="text-cream/80">{{ item.name }}</span>
+    </nav>
+
+    <div class="grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+      <div class="relative overflow-hidden rounded-[2rem] border border-gold/20">
+        <div class="relative aspect-[4/3] min-h-[280px] bg-night">
+          <img
+            [src]="item.image"
+            [alt]="'Imagen de ' + item.name"
+            width="960"
+            height="720"
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent"></div>
+        </div>
+        <div
+          class="absolute top-4 left-4 flex h-12 w-12 items-center justify-center rounded-full border border-gold/30 bg-ink/70 text-gold-light backdrop-blur-md"
+        >
+          <app-icon [name]="iconName(item.icon)" [size]="22" />
+        </div>
+      </div>
+
+      <div>
+        <p class="section-kicker">Detalle del servicio</p>
+        <h1 class="mt-3 font-display text-4xl md:text-5xl">{{ item.name }}</h1>
+        <p class="mt-4 text-base leading-7 text-cream/75">{{ item.description }}</p>
+
+        <div class="mt-6">
+          <div class="gold-card rounded-2xl p-4">
+            <p class="text-xs tracking-[0.18em] text-gold-light uppercase">Duración</p>
+            <p class="mt-1 font-display text-2xl">{{ item.duration }}</p>
+          </div>
+        </div>
+
+        <p class="mt-4 text-sm text-cream/60">
+          <span class="text-gold-light">Modalidad:</span> {{ item.modality }}
+        </p>
+
+        <div class="mt-8">
+          <app-payment-button [service]="item" [label]="item.cta" />
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-14 grid gap-10 lg:grid-cols-2">
+      <div>
+        <h2 class="font-display text-3xl">Qué incluye</h2>
+        <div class="ornament justify-start" aria-hidden="true">
+          <span class="ornament-line"></span>
+          <span class="brand-dot brand-dot-lg" aria-hidden="true"></span>
+          <span class="ornament-line"></span>
+        </div>
+        <ul class="space-y-3">
+          @for (entry of item.includes; track entry) {
+            <li class="flex items-start gap-3 text-sm leading-6 text-cream/75">
+              <span
+                class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-violet/20 text-gold-light"
+              >
+                <app-icon name="check" [size]="14" />
+              </span>
+              <span>{{ entry }}</span>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="font-display text-3xl">Ideal para</h2>
+        <div class="ornament justify-start" aria-hidden="true">
+          <span class="ornament-line"></span>
+          <span class="brand-dot brand-dot-lg" aria-hidden="true"></span>
+          <span class="ornament-line"></span>
+        </div>
+        <ul class="space-y-3">
+          @for (entry of item.idealFor; track entry) {
+            <li class="gold-card rounded-2xl px-4 py-3 text-sm leading-6 text-cream/75">
+              {{ entry }}
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 max-w-3xl">
+      <h2 class="font-display text-3xl">Sobre esta experiencia</h2>
+      <p class="mt-4 text-base leading-7 text-cream/75">{{ item.longDescription }}</p>
+      <p class="mt-4 text-sm leading-6 text-cream/50">{{ site.copy.legalDisclaimer }}</p>
+    </div>
+
+    <div
+      class="mt-12 overflow-hidden rounded-[2rem] border border-gold/20 px-6 py-10 text-center md:px-12"
+      style="background: radial-gradient(circle at 20% 20%, rgba(109,40,217,0.22), transparent 40%), #120c22;"
+    >
+      <h2 class="font-display text-3xl md:text-4xl">¿Quieres reservar {{ item.name }}?</h2>
+      <p class="mx-auto mt-3 max-w-xl text-cream/70">
+        Cuéntanos tu situación y coordinamos la consulta de forma privada.
+      </p>
+      <div class="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <app-payment-button [service]="item" label="Consultar" />
+        <a routerLink="/servicios" class="btn-secondary">Ver todos los servicios</a>
+      </div>
+    </div>
+
+    @if (related().length) {
+      <div class="mt-16">
+        <h2 class="font-display text-3xl">También te puede interesar</h2>
+        <div class="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+          @for (relatedItem of related(); track relatedItem.id) {
+            <app-service-card [service]="relatedItem" />
+          }
+        </div>
+      </div>
+    }
+  } @else {
+    <div class="mx-auto max-w-xl py-20 text-center">
+      <p class="section-kicker">404</p>
+      <h1 class="mt-3 font-display text-4xl">Servicio no encontrado</h1>
+      <p class="mt-4 text-cream/70">
+        El servicio que buscas no está disponible o el enlace cambió.
+      </p>
+      <a routerLink="/servicios" class="btn-primary mt-8 inline-flex">Ver servicios</a>
+    </div>
+  }
+</section>

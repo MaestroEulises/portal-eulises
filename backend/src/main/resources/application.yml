@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: maestro-eulises-api
+  jackson:
+    default-property-inclusion: non_null
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: never
+
+app:
+  cors:
+    allowed-origins:
+      - http://localhost:4200
+      - http://127.0.0.1:4200
+      - http://localhost:4000
+      - http://127.0.0.1:4000
+  contact:
+    inbox: hola@maestroeulises.com
+  payments:
+    enabled: false
+    provider: none
+    public-key: ${PAYMENTS_PUBLIC_KEY:}
+    secret-key: ${PAYMENTS_SECRET_KEY:}

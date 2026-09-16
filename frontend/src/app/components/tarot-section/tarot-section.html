@@ -1,0 +1,42 @@
+<section id="tarot" class="scroll-mt-24 py-16 md:py-24">
+  <div class="container-page">
+    <p class="section-kicker">Cartas</p>
+    <h2 class="mt-3 max-w-3xl font-display text-4xl md:text-5xl">{{ site.copy.tarotTitle }}</h2>
+    <div class="ornament justify-start" aria-hidden="true">
+      <span class="ornament-line"></span>
+      <span class="brand-dot brand-dot-lg" aria-hidden="true"></span>
+      <span class="ornament-line"></span>
+    </div>
+    <div class="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+      @for (item of items; track item.id) {
+        <article class="gold-card rounded-3xl p-6">
+          <a [routerLink]="['/servicios', item.serviceId]" class="block no-underline">
+            <p class="text-2xl" aria-hidden="true">{{ item.emoji }}</p>
+            <p class="mt-2 text-xs tracking-[0.2em] text-gold-light uppercase">{{ item.title }}</p>
+            <h3 class="mt-2 font-display text-2xl text-cream transition hover:text-gold-light">
+              {{ item.name }}
+            </h3>
+            <p class="mt-3 text-sm leading-6 text-cream/70">{{ item.description }}</p>
+            <p class="mt-4 text-sm text-cream/55">{{ item.duration }}</p>
+          </a>
+          <div class="mt-6 flex flex-wrap gap-2">
+            <a
+              class="btn-secondary !px-4 !py-2 text-sm"
+              [routerLink]="['/servicios', item.serviceId]"
+            >
+              Ver detalle
+            </a>
+            <a
+              class="btn-primary !px-4 !py-2 text-sm"
+              [href]="whatsappHref(item.id)"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Reservar lectura
+            </a>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,38 @@
+# Ejemplo Nginx — SPA Angular + API Spring Boot (Tomcat embebido)
+#
+# Flujo típico:
+# 1) Frontend: npm --prefix frontend run build
+#    Artefactos: frontend/dist/portal-esoterico/browser
+# 2) Backend:  npm run backend:build  (o backend/mvnw.cmd package)
+#    JAR: backend/target/*.jar  →  java -jar ... (puerto 8080)
+# 3) Nginx sirve el SPA y hace proxy de /api al backend
+
+server {
+    listen 80;
+    server_name maestroeulises.com www.maestroeulises.com;
+
+    root /var/www/maestro-eulises;
+    index index.html;
+
+    # API → Spring Boot (Tomcat embebido)
+    location /api/ {
+        proxy_pass http://127.0.0.1:8080/api/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # SPA: rutas de Angular
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Cache de assets hasheados
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|webp|woff2?)$ {
+        expires 7d;
+        add_header Cache-Control "public";
+        try_files $uri =404;
+    }
+}

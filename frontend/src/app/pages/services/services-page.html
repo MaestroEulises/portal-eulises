@@ -1,0 +1,13 @@
+<section class="container-page pt-28 pb-20">
+  <p class="section-kicker">Catálogo completo</p>
+  <h1 class="mt-3 font-display text-4xl md:text-5xl">Todos los servicios</h1>
+  <p class="mt-4 max-w-2xl text-cream/70">{{ site.copy.servicesText }}</p>
+  <div class="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+    @for (service of items; track service.id) {
+      <app-service-card [service]="service" />
+    }
+  </div>
+  <a routerLink="/" fragment="contacto" class="btn-secondary mt-10 inline-flex"
+    >Quiero información</a
+  >
+</section>

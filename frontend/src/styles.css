@@ -1,0 +1,438 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-ink: #08070d;
+  --color-night: #17102b;
+  --color-purple: #6d28d9;
+  --color-violet: #8b5cf6;
+  --color-gold: #d4af37;
+  --color-gold-light: #f4d58d;
+  --color-cream: #f8f5ef;
+  --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Cormorant Garamond', ui-serif, Georgia, serif;
+  --font-logo: 'Cinzel', ui-serif, Georgia, serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-ink font-sans text-cream antialiased;
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(109, 40, 217, 0.18), transparent 32%),
+      radial-gradient(circle at 88% 18%, rgba(212, 175, 55, 0.08), transparent 28%),
+      linear-gradient(180deg, #08070d 0%, #120c22 48%, #08070d 100%);
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(139, 92, 246, 0.35);
+    color: #f8f5ef;
+  }
+
+  :focus-visible {
+    outline: 2px solid #f4d58d;
+    outline-offset: 3px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-wide text-cream;
+  }
+}
+
+@utility container-page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 72rem;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .container-page {
+    padding-inline: 2rem;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100%;
+  z-index: 100;
+  border-radius: 999px;
+  background: #f4d58d;
+  color: #08070d;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.85rem 1.45rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, #f4d58d 0%, #d4af37 100%);
+  color: #08070d;
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.22);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 36px rgba(212, 175, 55, 0.38);
+}
+
+.btn-secondary {
+  border: 1px solid rgba(244, 213, 141, 0.45);
+  background: rgba(255, 255, 255, 0.04);
+  color: #f8f5ef;
+  backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  border-color: #f4d58d;
+  box-shadow: 0 0 24px rgba(139, 92, 246, 0.28);
+}
+
+.btn-ghost {
+  color: #f4d58d;
+  padding-inline: 0.4rem;
+}
+
+.btn-ghost:hover {
+  color: #f8f5ef;
+}
+
+.gold-card {
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(23, 16, 43, 0.55));
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(139, 92, 246, 0.08);
+  backdrop-filter: blur(16px);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.gold-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(244, 213, 141, 0.5);
+  box-shadow:
+    0 22px 50px rgba(109, 40, 217, 0.18),
+    0 0 32px rgba(212, 175, 55, 0.12);
+}
+
+.section-kicker {
+  color: #f4d58d;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Punto luminoso del logo: ESOTERISMO · GUÍA ESPIRITUAL · SOLUCIONES */
+.brand-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: radial-gradient(circle at 32% 28%, #fff8e7 0%, #f4d58d 42%, #c9a227 100%);
+  box-shadow:
+    0 0 6px rgba(244, 213, 141, 0.9),
+    0 0 14px rgba(212, 175, 55, 0.45);
+}
+
+.brand-dot-lg {
+  width: 7px;
+  height: 7px;
+  box-shadow:
+    0 0 8px rgba(244, 213, 141, 0.95),
+    0 0 18px rgba(212, 175, 55, 0.55);
+}
+
+.brand-tagline {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.65rem;
+  font-family: var(--font-logo);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(248, 245, 239, 0.78);
+}
+
+.brand-tagline-hero {
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  color: #f4d58d;
+}
+
+.brand-tagline-compact {
+  gap: 0.35rem 0.45rem;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  color: rgba(248, 245, 239, 0.6);
+}
+
+.brand-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.7rem;
+}
+
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-block: 1rem;
+}
+
+.ornament-line {
+  height: 1px;
+  width: 4.5rem;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+.field {
+  width: 100%;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(244, 213, 141, 0.18);
+  background: rgba(8, 7, 13, 0.55);
+  color: #f8f5ef;
+  padding: 0.85rem 1rem;
+}
+
+.field:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+  outline: none;
+}
+
+.field-error {
+  border-color: #f87171;
+}
+
+.star {
+  position: absolute;
+  display: block;
+  border-radius: 999px;
+  background: #f8f5ef;
+  box-shadow: 0 0 8px rgba(244, 213, 141, 0.9);
+  animation: twinkle 4.8s ease-in-out infinite;
+}
+
+.hero-glow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes moon-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(8px, -10px, 0);
+  }
+}
+
+@keyframes starfield-drift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-1200px);
+  }
+}
+
+@keyframes starfield-twinkle {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.starfield-layer {
+  position: absolute;
+  inset: -20% 0 0;
+  width: 100%;
+  height: 220%;
+  background-repeat: repeat;
+  background-size: 320px 320px;
+  will-change: transform;
+}
+
+.starfield-layer--far {
+  opacity: 0.8;
+  animation:
+    starfield-drift 140s linear infinite,
+    starfield-twinkle 7s ease-in-out infinite;
+  background-image:
+    radial-gradient(1.25px 1.25px at 20px 30px, rgba(248, 245, 239, 0.95), transparent),
+    radial-gradient(1.25px 1.25px at 80px 120px, rgba(244, 213, 141, 0.8), transparent),
+    radial-gradient(1.25px 1.25px at 160px 60px, rgba(248, 245, 239, 0.9), transparent),
+    radial-gradient(1.25px 1.25px at 240px 200px, rgba(167, 139, 250, 0.7), transparent),
+    radial-gradient(1.25px 1.25px at 280px 90px, rgba(248, 245, 239, 0.85), transparent),
+    radial-gradient(1.25px 1.25px at 50px 250px, rgba(244, 213, 141, 0.65), transparent),
+    radial-gradient(1.25px 1.25px at 190px 280px, rgba(248, 245, 239, 0.95), transparent),
+    radial-gradient(1.25px 1.25px at 300px 160px, rgba(248, 245, 239, 0.75), transparent),
+    radial-gradient(1px 1px at 110px 180px, rgba(248, 245, 239, 0.7), transparent),
+    radial-gradient(1px 1px at 220px 40px, rgba(244, 213, 141, 0.6), transparent);
+}
+
+.starfield-layer--mid {
+  opacity: 0.9;
+  animation:
+    starfield-drift 95s linear infinite,
+    starfield-twinkle 5.5s ease-in-out infinite;
+  animation-delay: -20s, 0s;
+  background-size: 420px 420px;
+  background-image:
+    radial-gradient(2px 2px at 40px 70px, rgba(248, 245, 239, 1), transparent),
+    radial-gradient(1.5px 1.5px at 120px 40px, rgba(244, 213, 141, 0.9), transparent),
+    radial-gradient(2px 2px at 210px 180px, rgba(248, 245, 239, 0.95), transparent),
+    radial-gradient(1.5px 1.5px at 310px 110px, rgba(167, 139, 250, 0.75), transparent),
+    radial-gradient(1.5px 1.5px at 90px 300px, rgba(248, 245, 239, 0.9), transparent),
+    radial-gradient(2px 2px at 350px 260px, rgba(244, 213, 141, 0.8), transparent),
+    radial-gradient(1.5px 1.5px at 260px 340px, rgba(248, 245, 239, 1), transparent),
+    radial-gradient(1.5px 1.5px at 180px 230px, rgba(248, 245, 239, 0.8), transparent),
+    radial-gradient(1.5px 1.5px at 30px 200px, rgba(244, 213, 141, 0.7), transparent),
+    radial-gradient(2px 2px at 380px 60px, rgba(248, 245, 239, 0.9), transparent);
+}
+
+.starfield-layer--near {
+  opacity: 1;
+  animation:
+    starfield-drift 60s linear infinite,
+    starfield-twinkle 4s ease-in-out infinite;
+  animation-delay: -8s, 1s;
+  background-size: 540px 540px;
+  background-image:
+    radial-gradient(2.5px 2.5px at 60px 90px, rgba(248, 245, 239, 1), transparent),
+    radial-gradient(2px 2px at 180px 50px, rgba(244, 213, 141, 0.95), transparent),
+    radial-gradient(2.5px 2.5px at 320px 220px, rgba(248, 245, 239, 1), transparent),
+    radial-gradient(1.5px 1.5px at 450px 140px, rgba(167, 139, 250, 0.85), transparent),
+    radial-gradient(2px 2px at 100px 400px, rgba(248, 245, 239, 0.95), transparent),
+    radial-gradient(2.5px 2.5px at 400px 480px, rgba(244, 213, 141, 0.9), transparent),
+    radial-gradient(1.5px 1.5px at 250px 300px, rgba(248, 245, 239, 1), transparent),
+    radial-gradient(2px 2px at 500px 360px, rgba(248, 245, 239, 0.9), transparent),
+    radial-gradient(2px 2px at 40px 260px, rgba(244, 213, 141, 0.85), transparent);
+}
+
+.starfield-dust {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(109, 40, 217, 0.16), transparent 42%),
+    radial-gradient(ellipse at 80% 30%, rgba(212, 175, 55, 0.09), transparent 40%),
+    radial-gradient(ellipse at 50% 80%, rgba(139, 92, 246, 0.12), transparent 45%);
+}
+
+.animate-fade-up {
+  animation: fade-up 0.9s ease both;
+}
+
+.animate-moon {
+  animation: moon-drift 14s ease-in-out infinite;
+}
+
+.header-solid {
+  background: rgba(8, 7, 13, 0.82);
+  border-bottom-color: rgba(212, 175, 55, 0.18);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(18px);
+}
+
+.legal-content h2 {
+  @apply mt-10 mb-3 font-display text-2xl text-gold-light;
+}
+
+.legal-content p,
+.legal-content li {
+  @apply text-[0.98rem] leading-7 text-cream/80;
+}
+
+.legal-content ul {
+  @apply my-4 list-disc space-y-2 pl-5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .star,
+  .starfield-layer,
+  .animate-fade-up,
+  .animate-moon,
+  .gold-card,
+  .btn-primary,
+  .btn-secondary {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .starfield-layer {
+    opacity: 0.75;
+  }
+}

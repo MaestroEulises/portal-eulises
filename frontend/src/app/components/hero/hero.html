@@ -1,0 +1,57 @@
+<section id="inicio" class="relative isolate min-h-[100svh] overflow-hidden">
+  <img
+    ngSrc="/images/hero-luna-tarot.png"
+    alt="Cielo nocturno con luna, estrellas y cartas de tarot"
+    fill
+    priority
+    sizes="100vw"
+    class="object-cover"
+  />
+  <div
+    class="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,7,13,0.55)_0%,rgba(8,7,13,0.72)_48%,rgba(8,7,13,0.92)_100%)]"
+  ></div>
+  <div class="hero-glow top-[18%] left-[12%] h-52 w-52 bg-purple/35"></div>
+  <div class="hero-glow right-[10%] bottom-[22%] h-64 w-64 bg-gold/20"></div>
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    @for (star of stars; track $index) {
+      <span
+        class="star"
+        [style.left.%]="star.x"
+        [style.top.%]="star.y"
+        [style.width.px]="star.s"
+        [style.height.px]="star.s"
+        [style.animation-delay]="star.d"
+      ></span>
+    }
+    <span
+      class="animate-moon absolute top-[16%] right-[9%] hidden h-28 w-28 rounded-full bg-[radial-gradient(circle_at_35%_32%,#f8f5ef,rgba(244,213,141,0.55)_46%,transparent_68%)] opacity-50 md:block"
+    ></span>
+  </div>
+
+  <div class="container-page relative z-10 flex min-h-[100svh] flex-col justify-center pt-24 pb-16">
+    <div class="animate-fade-up">
+      <app-brand-tagline [parts]="site.taglineParts" size="hero" />
+    </div>
+    <h1
+      class="animate-fade-up mt-4 max-w-3xl font-display text-4xl leading-tight text-cream sm:text-5xl md:text-6xl"
+      style="animation-delay: 0.12s"
+    >
+      {{ site.copy.heroTitle }}
+    </h1>
+    <p
+      class="animate-fade-up mt-6 max-w-2xl text-base leading-7 text-cream/80 md:text-lg"
+      style="animation-delay: 0.2s"
+    >
+      {{ site.copy.heroSubtitle }}
+    </p>
+    <div class="animate-fade-up mt-8 flex flex-col gap-3 sm:flex-row" style="animation-delay: 0.3s">
+      <a routerLink="/" fragment="servicios" class="btn-primary">Ver servicios</a>
+      <a class="btn-secondary" [href]="whatsappUrl" target="_blank" rel="noopener noreferrer">
+        Hablar por WhatsApp
+      </a>
+    </div>
+    <div class="animate-fade-up mt-8" style="animation-delay: 0.4s">
+      <app-brand-tagline [parts]="site.copy.trustLineParts" size="compact" />
+    </div>
+  </div>
+</section>

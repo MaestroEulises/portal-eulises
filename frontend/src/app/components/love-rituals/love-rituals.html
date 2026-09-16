@@ -1,0 +1,68 @@
+<section id="rituales" class="scroll-mt-24 py-8 md:py-16">
+  <div class="container-page overflow-hidden rounded-[2rem] border border-gold/20 bg-night/70">
+    <div class="grid lg:grid-cols-2">
+      <div class="relative min-h-[280px]">
+        <img
+          ngSrc="/images/ritual-amor.png"
+          alt="Velas, cuarzo rosa y elementos de un ritual espiritual de amor"
+          fill
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          class="object-cover"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-ink via-ink/40 to-transparent lg:bg-gradient-to-l"
+        ></div>
+      </div>
+      <div class="p-6 md:p-10">
+        <p class="section-kicker">Acompañamiento</p>
+        <h2 class="mt-3 font-display text-4xl">
+          <a
+            [routerLink]="detailPath"
+            class="text-cream no-underline transition hover:text-gold-light"
+          >
+            {{ site.copy.loveTitle }}
+          </a>
+        </h2>
+        <p class="mt-4 text-sm leading-7 text-cream/75 md:text-base">{{ site.copy.loveText }}</p>
+        <div class="mt-8 space-y-4">
+          @for (ritual of rituals; track ritual.id; let i = $index) {
+            <article class="gold-card rounded-2xl p-4">
+              <p class="text-xs tracking-[0.2em] text-gold-light">0{{ i + 1 }}</p>
+              <h3 class="mt-1 font-display text-2xl">
+                <a
+                  [routerLink]="['/servicios', ritual.serviceId]"
+                  class="text-cream no-underline transition hover:text-gold-light"
+                >
+                  {{ ritual.title }}
+                </a>
+              </h3>
+              <p class="mt-2 text-sm leading-6 text-cream/70">{{ ritual.description }}</p>
+              <div class="mt-3 flex flex-wrap gap-3">
+                <a
+                  class="btn-ghost text-sm"
+                  [routerLink]="['/servicios', ritual.serviceId]"
+                >
+                  Ver detalle
+                </a>
+                <a
+                  class="btn-ghost text-sm"
+                  [href]="whatsappHref(ritual.id)"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Quiero información
+                </a>
+              </div>
+            </article>
+          }
+        </div>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a class="btn-primary" [routerLink]="detailPath">Ver Amarres de Amor</a>
+          <a class="btn-secondary" [href]="consultUrl" target="_blank" rel="noopener noreferrer">
+            Consultar por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
