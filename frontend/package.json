@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json",
+    "start": "ng serve",
     "build": "ng build",
+    "deploy": "npm run build && wrangler deploy",
     "lint": "prettier --check \"src/**/*.{ts,html,scss,css}\"",
     "format": "prettier --write \"src/**/*.{ts,html,scss,css}\"",
     "watch": "ng build --watch --configuration development",
@@ -31,7 +32,8 @@
     "@angular/cli": "^22.0.8",
     "@angular/compiler-cli": "^22.0.0",
     "prettier": "^3.8.1",
-    "typescript": "~6.0.2"
+    "typescript": "~6.0.2",
+    "wrangler": "^4.132.0"
   },
   "allowScripts": {
     "esbuild@0.28.2": true,

@@ -1,0 +1,15 @@
+{
+    "$schema": "./node_modules/wrangler/config-schema.json",
+  
+    "name": "portal-eulises",
+
+    "main": "./worker.js",
+  
+    "compatibility_date": "2026-09-15",
+  
+    "assets": {
+      "directory": "./dist/portal-esoterico/browser",
+      "binding": "ASSETS",
+      "not_found_handling": "single-page-application"
+    }
+  }
