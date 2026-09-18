@@ -30,11 +30,11 @@ export const siteConfig = {
    * Ejemplo: 573143681319
    */
   whatsapp: {
-    number: '573143681319',
+    number: '573224022541',
     defaultMessage:
-      '✨ Hola, Maestro Eulises.\n\n🌙 Llego desde su página web.\n\n💫 ¿Buscas amor, tarot o limpieza?\n\n🙏 Quedo atento/a a su orientación. Gracias.',
+      '✨ Hola, Maestro Eulises.\n\n🌙 Vengo desde su página web.\n\n💫 ¿Buscas amor, tarot o limpieza?\n\n🙏 Quedo atento/a a su orientación. Gracias.',
     welcomeMessage:
-      '✨ Hola, Maestro Eulises.\n\n🌙 Llego desde su página web.\n\n💫 ¿Buscas amor, tarot o limpieza?\n\n🙏 Quedo atento/a a su orientación. Gracias.',
+      '✨ Hola, Maestro Eulises.\n\n🌙 Vengo desde su página web.\n\n💫 ¿Buscas amor, tarot o limpieza?\n\n🙏 Quedo atento/a a su orientación. Gracias.',
     greetingName: 'Maestro Eulises',
   },
 

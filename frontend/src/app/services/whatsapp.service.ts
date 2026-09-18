@@ -5,7 +5,7 @@ import { tarotModalities, loveRituals } from '../data/services';
 
 const SERVICE_MESSAGES: Record<string, string> = {
   'amarres-de-amor':
-    '💖 Hola, Maestro Eulises.\n\nLlego desde la web y me interesa conocer más sobre los rituales espirituales de amor y armonización.\n\n🙏 ¿Podría orientarme sobre la mejor opción para mi situación? Gracias.',
+    '💖 Hola, Maestro Eulises.\n\nVengo desde la web y me interesa conocer más sobre los rituales espirituales de amor y armonización.\n\n🙏 ¿Podría orientarme sobre la mejor opción para mi situación? Gracias.',
   'tarot-del-amor':
     '🔮❤️ Hola, Maestro Eulises.\n\nMe gustaría reservar o saber más sobre el Tarot del Amor.\n\n✨ Quedo atento/a para coordinar la consulta. Gracias.',
   'limpieza-energetica':
