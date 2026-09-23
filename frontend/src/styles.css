@@ -271,6 +271,40 @@
   }
 }
 
+.welcome-veil {
+  background: rgba(8, 7, 13, 0.72);
+  backdrop-filter: blur(10px);
+  animation: welcome-veil 0.45s ease;
+}
+
+.welcome-portal {
+  animation: welcome-portal 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.welcome-title {
+  text-shadow: 0 0 28px rgba(212, 175, 55, 0.28);
+}
+
+@keyframes welcome-veil {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes welcome-portal {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @keyframes fade-up {
   from {
     opacity: 0;
