@@ -1,0 +1,70 @@
+@if (open()) {
+  <div
+    class="welcome-veil fixed inset-0 z-[80] flex items-center justify-center p-4 sm:p-6"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="welcome-title"
+    (click)="close()"
+  >
+    <div
+      class="welcome-portal relative w-full max-w-xl overflow-hidden rounded-[1.75rem] border border-gold/30 shadow-[0_30px_80px_rgba(0,0,0,0.55)]"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="absolute inset-0 bg-night">
+        <img
+          [src]="posterSrc"
+          alt=""
+          class="h-full w-full object-cover opacity-70"
+          aria-hidden="true"
+        />
+        @if (showVideo()) {
+          <video
+            class="absolute inset-0 h-full w-full object-cover"
+            autoplay
+            muted
+            loop
+            playsinline
+            [attr.poster]="posterSrc"
+            aria-hidden="true"
+            tabindex="-1"
+            (error)="onVideoError()"
+          >
+            <source [src]="videoSrc" type="video/mp4" />
+          </video>
+        }
+        <div
+          class="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,7,13,0.35)_0%,rgba(8,7,13,0.72)_48%,rgba(8,7,13,0.94)_100%)]"
+        ></div>
+      </div>
+
+      <button
+        type="button"
+        class="absolute top-3 right-3 z-20 inline-flex h-9 w-9 items-center justify-center rounded-full border border-gold/25 bg-ink/50 text-gold-light backdrop-blur-md"
+        aria-label="Cerrar bienvenida"
+        (click)="close()"
+      >
+        <app-icon name="x" [size]="18" />
+      </button>
+
+      <div class="relative z-10 flex min-h-[28rem] flex-col justify-end px-6 py-8 sm:min-h-[32rem] sm:px-10 sm:py-10">
+        <p class="section-kicker">El umbral está abierto</p>
+        <h2 id="welcome-title" class="welcome-title mt-3 font-display text-3xl leading-tight sm:text-4xl">
+          Bienvenido al portal del Maestro Eulises
+        </h2>
+        <div class="ornament justify-start" aria-hidden="true">
+          <span class="ornament-line"></span>
+          <span class="brand-dot brand-dot-lg"></span>
+          <span class="ornament-line"></span>
+        </div>
+        <app-brand-tagline [parts]="site.taglineParts" size="compact" />
+        <p class="mt-4 max-w-md text-sm leading-6 text-cream/75 sm:text-base">
+          Aquí las velas ya están encendidas. Entra con calma: tarot, rituales y orientación
+          privada te esperan al otro lado.
+        </p>
+        <button type="button" class="btn-primary mt-7 self-start !px-5 !py-2.5 text-sm" (click)="close()">
+          Cruzar el umbral
+        </button>
+      </div>
+    </div>
+  </div>
+}
