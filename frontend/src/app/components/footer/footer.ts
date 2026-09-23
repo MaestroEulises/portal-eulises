@@ -12,5 +12,10 @@ import { BrandTagline } from '../brand-tagline/brand-tagline';
 export class Footer {
   readonly site = siteConfig;
   readonly year = 2026;
-  readonly whatsappUrl = inject(WhatsAppService).welcomeUrl();
+  private readonly whatsapp = inject(WhatsAppService);
+  readonly whatsappUrl = this.whatsapp.welcomeUrl();
+
+  onWhatsAppClick(): void {
+    this.whatsapp.onContactClick();
+  }
 }

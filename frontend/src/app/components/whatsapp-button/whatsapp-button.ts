@@ -6,5 +6,10 @@ import { WhatsAppService } from '../../services/whatsapp.service';
   templateUrl: './whatsapp-button.html',
 })
 export class WhatsAppButton {
-  readonly href = inject(WhatsAppService).welcomeUrl();
+  private readonly whatsapp = inject(WhatsAppService);
+  readonly href = this.whatsapp.welcomeUrl();
+
+  onContactClick(): void {
+    this.whatsapp.onContactClick();
+  }
 }

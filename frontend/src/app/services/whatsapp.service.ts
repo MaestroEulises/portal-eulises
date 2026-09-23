@@ -95,10 +95,27 @@ export class WhatsAppService {
   }
 
   open(message?: string): void {
+    this.trackContactConversion();
     window.open(this.url(message), '_blank', 'noopener,noreferrer');
   }
 
   openForService(id?: string): void {
     this.open(this.messageFor(id));
+  }
+
+  /** Dispara la conversión "Contacto" de Google Ads al clic de WhatsApp. */
+  onContactClick(): void {
+    this.trackContactConversion();
+  }
+
+  private trackContactConversion(): void {
+    const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
+    if (typeof gtag !== 'function') {
+      return;
+    }
+
+    gtag('event', 'conversion', {
+      send_to: siteConfig.ads.conversionSendTo,
+    });
   }
 }

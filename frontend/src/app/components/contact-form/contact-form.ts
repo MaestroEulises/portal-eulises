@@ -39,6 +39,10 @@ export class ContactForm {
     this.submittedAt = Date.now();
   }
 
+  onWhatsAppClick(): void {
+    this.whatsapp.onContactClick();
+  }
+
   hasError(control: string): boolean {
     const field = this.form.get(control);
     return !!field && field.invalid && (field.dirty || field.touched);

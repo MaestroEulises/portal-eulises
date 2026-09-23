@@ -34,5 +34,10 @@ const STAR_FIELD = [
 export class Hero {
   readonly site = siteConfig;
   readonly stars = STAR_FIELD;
-  readonly whatsappUrl = inject(WhatsAppService).welcomeUrl();
+  private readonly whatsapp = inject(WhatsAppService);
+  readonly whatsappUrl = this.whatsapp.welcomeUrl();
+
+  onWhatsAppClick(): void {
+    this.whatsapp.onContactClick();
+  }
 }

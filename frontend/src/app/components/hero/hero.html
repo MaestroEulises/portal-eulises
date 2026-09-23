@@ -46,7 +46,13 @@
     </p>
     <div class="animate-fade-up mt-8 flex flex-col gap-3 sm:flex-row" style="animation-delay: 0.3s">
       <a routerLink="/" fragment="servicios" class="btn-primary">Ver servicios</a>
-      <a class="btn-secondary" [href]="whatsappUrl" target="_blank" rel="noopener noreferrer">
+      <a
+        class="btn-secondary"
+        [href]="whatsappUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        (click)="onWhatsAppClick()"
+      >
         Hablar por WhatsApp
       </a>
     </div>

@@ -49,6 +49,7 @@
                   [href]="whatsappHref(ritual.id)"
                   target="_blank"
                   rel="noopener noreferrer"
+                  (click)="onWhatsAppClick()"
                 >
                   Quiero información
                 </a>
@@ -58,7 +59,13 @@
         </div>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
           <a class="btn-primary" [routerLink]="detailPath">Ver Amarres de Amor</a>
-          <a class="btn-secondary" [href]="consultUrl" target="_blank" rel="noopener noreferrer">
+          <a
+            class="btn-secondary"
+            [href]="consultUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            (click)="onWhatsAppClick()"
+          >
             Consultar por WhatsApp
           </a>
         </div>

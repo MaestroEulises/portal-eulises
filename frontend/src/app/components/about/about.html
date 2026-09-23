@@ -50,7 +50,13 @@
       </div>
       <p class="text-base leading-7 text-cream/75">{{ site.copy.aboutText }}</p>
       <p class="mt-5 text-sm leading-6 text-cream/60">{{ site.copy.aboutNote }}</p>
-      <a class="btn-primary mt-8" [href]="whatsappUrl" target="_blank" rel="noopener noreferrer">
+      <a
+        class="btn-primary mt-8"
+        [href]="whatsappUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        (click)="onWhatsAppClick()"
+      >
         Consultar con {{ site.name }}
       </a>
     </div>

@@ -38,6 +38,10 @@ export const siteConfig = {
     greetingName: 'Maestro Eulises',
   },
 
+  ads: {
+    conversionSendTo: 'AW-18453624618/TWueCL2vx_wcEKrur99E',
+  },
+
   social: {
     instagram: 'https://www.instagram.com/maestroeulises',
     facebook: 'https://www.facebook.com/maestroeulises',

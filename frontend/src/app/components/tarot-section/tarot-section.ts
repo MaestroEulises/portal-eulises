@@ -17,4 +17,8 @@ export class TarotSection {
   whatsappHref(id: string): string {
     return this.whatsapp.urlFor(id);
   }
+
+  onWhatsAppClick(): void {
+    this.whatsapp.onContactClick();
+  }
 }

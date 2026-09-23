@@ -47,4 +47,9 @@ export class Header {
   closeMenu(): void {
     this.menuOpen.set(false);
   }
+
+  onWhatsAppClick(): void {
+    this.whatsapp.onContactClick();
+    this.closeMenu();
+  }
 }

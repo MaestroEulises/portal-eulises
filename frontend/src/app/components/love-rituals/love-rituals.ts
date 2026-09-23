@@ -22,4 +22,8 @@ export class LoveRituals {
   }
 
   consultUrl = this.whatsapp.url('Hola, quiero consultar mi situación.');
+
+  onWhatsAppClick(): void {
+    this.whatsapp.onContactClick();
+  }
 }

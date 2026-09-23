@@ -10,5 +10,10 @@ import { WhatsAppService } from '../../services/whatsapp.service';
 })
 export class Cta {
   readonly site = siteConfig;
-  readonly whatsappUrl = inject(WhatsAppService).welcomeUrl();
+  private readonly whatsapp = inject(WhatsAppService);
+  readonly whatsappUrl = this.whatsapp.welcomeUrl();
+
+  onWhatsAppClick(): void {
+    this.whatsapp.onContactClick();
+  }
 }

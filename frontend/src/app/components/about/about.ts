@@ -10,5 +10,10 @@ import { BrandTagline } from '../brand-tagline/brand-tagline';
 })
 export class About {
   readonly site = siteConfig;
-  readonly whatsappUrl = inject(WhatsAppService).welcomeUrl();
+  private readonly whatsapp = inject(WhatsAppService);
+  readonly whatsappUrl = this.whatsapp.welcomeUrl();
+
+  onWhatsAppClick(): void {
+    this.whatsapp.onContactClick();
+  }
 }

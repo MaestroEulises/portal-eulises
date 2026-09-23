@@ -7,7 +7,13 @@
         Completa el formulario y te responderemos a la brevedad. También puedes escribirnos por
         WhatsApp si prefieres una conversación más directa.
       </p>
-      <a class="btn-secondary mt-6" [href]="whatsappUrl" target="_blank" rel="noopener noreferrer">
+      <a
+        class="btn-secondary mt-6"
+        [href]="whatsappUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        (click)="onWhatsAppClick()"
+      >
         Continuar por WhatsApp
       </a>
     </div>
